@@ -1,41 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { Monitor, Terminal, CheckCircle, Info } from "lucide-react";
 import CodeBlock from "@/components/ui/CodeBlock";
 import { useI18n } from "@/i18n";
 
+type OSTab = "unix" | "windows";
+
 export default function QuickStartSection() {
-  const { t, locale } = useI18n();
-  const [activeStep, setActiveStep] = useState(0);
+  const { t } = useI18n();
+  const [activeOS, setActiveOS] = useState<OSTab>("unix");
 
-  const stepCodes = [
-    `$ pip install hiclaw`,
-    `$ hiclaw init
-${locale === "zh" ? "# 按提示配置 Matrix Homeserver 地址" : "# Follow prompts to configure Matrix Homeserver address"}
-${locale === "zh" ? "# 输入访问令牌或创建新账户" : "# Enter access token or create new account"}`,
-    `$ hiclaw run --task "${locale === "zh" ? "分析这份季度报告并生成摘要" : "Analyze the quarterly report and generate summary"}"
-${locale === "zh" ? "# Manager Agent 将自动分解任务" : "# Manager Agent will automatically decompose the task"}
-${locale === "zh" ? "# Worker Agents 并行执行" : "# Worker Agents execute in parallel"}
-${locale === "zh" ? "# 你可以在 Matrix 客户端实时观察" : "# You can observe in real-time via Matrix client"}`,
-  ];
-
-  const completeCode = `${t.quickstart.comments.install}
-$ pip install hiclaw
-
-${t.quickstart.comments.init}
-$ hiclaw init
-
-${t.quickstart.comments.run}
-$ hiclaw run --task "${locale === "zh" ? "研究最新 AI 趋势并创建摘要报告" : "Research the latest AI trends and create a summary report"}"
-
-${t.quickstart.comments.output}
-${t.quickstart.comments.manager1}
-${t.quickstart.comments.manager2}
-${t.quickstart.comments.worker1}
-${t.quickstart.comments.worker2}
-${t.quickstart.comments.worker3}
-# 
-${t.quickstart.comments.observe}`;
+  const installCommands: Record<OSTab, string> = {
+    unix: "bash <(curl -sSL https://higress.ai/hiclaw/install.sh)",
+    windows:
+      "Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://higress.ai/hiclaw/install.ps1'))",
+  };
 
   return (
     <section id="quickstart" className="section-padding bg-white">
@@ -45,51 +25,86 @@ ${t.quickstart.comments.observe}`;
           <h2 className="mb-4 text-3xl font-bold text-text-primary md:text-4xl">
             {t.quickstart.title}
           </h2>
-          <p className="text-lg text-text-secondary">{t.quickstart.subtitle}</p>
+          <p className="text-lg text-text-secondary">
+            {t.quickstart.subtitle}
+          </p>
         </div>
 
-        {/* Steps */}
         <div className="mx-auto max-w-3xl">
-          {/* Step Tabs */}
-          <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
-            {t.quickstart.steps.map((step, index) => (
-              <button
-                key={step.id}
-                onClick={() => setActiveStep(index)}
-                className={`flex items-center gap-2 whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                  activeStep === index
-                    ? "bg-primary-600 text-white"
-                    : "bg-slate-100 text-text-secondary hover:bg-slate-200"
-                }`}
-              >
-                <span
-                  className={`flex h-6 w-6 items-center justify-center rounded-full text-xs ${
-                    activeStep === index
-                      ? "bg-white/20 text-white"
-                      : "bg-slate-200 text-slate-600"
-                  }`}
-                >
-                  {index + 1}
-                </span>
-                <span>{step.title}</span>
-              </button>
-            ))}
+          {/* OS Tabs */}
+          <div className="mb-6 flex gap-2">
+            <button
+              onClick={() => setActiveOS("unix")}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${
+                activeOS === "unix"
+                  ? "bg-primary-600 text-white"
+                  : "bg-slate-100 text-text-secondary hover:bg-slate-200"
+              }`}
+            >
+              <Terminal className="h-4 w-4" />
+              {t.quickstart.tabMacLinux}
+            </button>
+            <button
+              onClick={() => setActiveOS("windows")}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${
+                activeOS === "windows"
+                  ? "bg-primary-600 text-white"
+                  : "bg-slate-100 text-text-secondary hover:bg-slate-200"
+              }`}
+            >
+              <Monitor className="h-4 w-4" />
+              {t.quickstart.tabWindows}
+            </button>
           </div>
 
-          {/* Step Content */}
-          <div className="space-y-4">
-            <p className="text-text-secondary">
-              {t.quickstart.steps[activeStep].description}
-            </p>
-            <CodeBlock code={stepCodes[activeStep]} language="bash" />
-          </div>
+          {/* Install Command */}
+          <CodeBlock
+            code={installCommands[activeOS]}
+            language={activeOS === "unix" ? "bash" : "powershell"}
+          />
 
-          {/* All Steps Preview */}
-          <div className="mt-12 rounded-xl border border-slate-200 bg-surface-muted p-6">
-            <h3 className="mb-4 font-semibold text-text-primary">
-              {t.quickstart.completeExample}
+          {/* Output Preview */}
+          <div className="mt-8 rounded-xl border border-slate-200 bg-surface-muted p-6">
+            <h3 className="mb-3 font-semibold text-text-primary">
+              {t.quickstart.outputTitle}
             </h3>
-            <CodeBlock code={completeCode} language="bash" showLineNumbers />
+            <div className="rounded-lg bg-[#1a1f2e] px-5 py-4 font-mono text-sm leading-relaxed">
+              {t.quickstart.outputLines.map((line, i) => (
+                <div
+                  key={i}
+                  className={
+                    i === 0
+                      ? "text-emerald-400 font-semibold"
+                      : "text-slate-300"
+                  }
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Prerequisites */}
+          <div className="mt-8 rounded-xl border border-blue-100 bg-blue-50/50 p-6">
+            <h3 className="mb-3 flex items-center gap-2 font-semibold text-text-primary">
+              <Info className="h-5 w-5 text-blue-500" />
+              {t.quickstart.prerequisite}
+            </h3>
+            <p className="mb-3 text-sm text-text-secondary">
+              {t.quickstart.prerequisiteDesc}
+            </p>
+            <ul className="mb-3 space-y-1.5">
+              {t.quickstart.dockerItems.map((item, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-sm text-text-secondary"
+                >
+                  <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-text-tertiary">{t.quickstart.resourceNote}</p>
           </div>
         </div>
       </div>

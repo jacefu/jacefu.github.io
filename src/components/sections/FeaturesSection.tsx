@@ -3,15 +3,15 @@
 import FeatureCard from "@/components/ui/FeatureCard";
 import { useI18n } from "@/i18n";
 import {
+  ShieldCheck,
   Users,
   MessageSquare,
   Eye,
   Layers,
   Unlock,
-  Zap,
 } from "lucide-react";
 
-const featureIcons = [Users, MessageSquare, Eye, Layers, Unlock, Zap];
+const featureIcons = [ShieldCheck, Users, MessageSquare, Eye, Layers, Unlock];
 
 export default function FeaturesSection() {
   const { t } = useI18n();

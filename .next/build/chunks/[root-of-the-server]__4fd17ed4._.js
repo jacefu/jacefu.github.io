@@ -26,7 +26,8 @@ __turbopack_context__.s([
 ]);
 /** @type {import('postcss-load-config').Config} */ const config = {
     plugins: {
-        "@tailwindcss/postcss": {}
+        tailwindcss: {},
+        autoprefixer: {}
     }
 };
 const __TURBOPACK__default__export__ = config;

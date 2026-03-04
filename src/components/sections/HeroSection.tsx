@@ -4,55 +4,95 @@ import { Github, ArrowRight, Sparkles } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import { useI18n } from "@/i18n";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+
+type OSType = "unix" | "windows";
 
 export default function HeroSection() {
   const { t, locale } = useI18n();
   const [displayedText, setDisplayedText] = useState("");
   const [commandIndex, setCommandIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  const [selectedOS, setSelectedOS] = useState<OSType>("unix");
 
-  const terminalCommands = [
-    "$ pip install hiclaw",
-    "$ hiclaw init",
-    locale === "zh"
-      ? '$ hiclaw run --task "分析这份季度报告"'
-      : '$ hiclaw run --task "Analyze the quarterly report"',
-  ];
+  // OS-specific commands
+  const commandsByOS: Record<OSType, string[]> = {
+    unix: [
+      "# Quick install (interactive)",
+      "$ bash <(curl -sSL https://higress.ai/hiclaw/install.sh)",
+      "",
+      "# Or clone and install",
+      "$ git clone https://github.com/higress-group/hiclaw.git && cd hiclaw",
+      '$ HICLAW_LLM_API_KEY="sk-xxx" make install',
+    ],
+    windows: [
+      "PS> Set-ExecutionPolicy Bypass -Scope Process -Force",
+      "PS> Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://higress.ai/hiclaw/install.ps1'))",
+      locale === "zh"
+        ? 'PS> make replay TASK="分析这份季度报告"'
+        : 'PS> make replay TASK="Analyze the quarterly report"',
+    ],
+  };
 
-  useEffect(() => {
+  const terminalCommands = commandsByOS[selectedOS];
+
+  const resetAnimation = useCallback(() => {
     setDisplayedText("");
     setCommandIndex(0);
     setCharIndex(0);
-  }, [locale]);
+    setIsTyping(true);
+  }, []);
 
   useEffect(() => {
+    resetAnimation();
+  }, [locale, selectedOS, resetAnimation]);
+
+  const handleOSChange = (os: OSType) => {
+    setSelectedOS(os);
+  };
+
+  useEffect(() => {
+    if (!isTyping) return;
+
     if (commandIndex >= terminalCommands.length) {
+      setIsTyping(false);
       const timeout = setTimeout(() => {
-        setCommandIndex(0);
-        setCharIndex(0);
-        setDisplayedText("");
-      }, 2000);
+        resetAnimation();
+      }, 3000);
       return () => clearTimeout(timeout);
     }
 
     const currentCommand = terminalCommands[commandIndex];
 
+    // Handle empty lines quickly
+    if (currentCommand === "") {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + "\n");
+        setCommandIndex((prev) => prev + 1);
+        setCharIndex(0);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+
     if (charIndex < currentCommand.length) {
+      // Faster typing for comments
+      const isComment = currentCommand.startsWith("#");
+      const delay = isComment ? 25 : 40;
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + currentCommand[charIndex]);
         setCharIndex((prev) => prev + 1);
-      }, 50);
+      }, delay);
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + "\n");
         setCommandIndex((prev) => prev + 1);
         setCharIndex(0);
-      }, 1000);
+      }, 800);
       return () => clearTimeout(timeout);
     }
-  }, [commandIndex, charIndex, terminalCommands]);
+  }, [commandIndex, charIndex, terminalCommands, isTyping, resetAnimation]);
 
   return (
     <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24">
@@ -80,10 +120,11 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mx-auto mb-8 max-w-2xl text-lg text-text-secondary md:text-xl">
-            {t.hero.subtitle}
-            <br className="hidden sm:block" />
-            {t.hero.subtitleLine2}
+          <p className="mx-auto mb-4 max-w-3xl text-base text-text-secondary md:text-lg">
+            {t.hero.subtitle} {t.hero.subtitleLine2}
+          </p>
+          <p className="mx-auto mb-8 max-w-3xl text-base font-semibold md:text-lg">
+            <span className="text-gradient">{t.hero.subtitleLine3}</span>
           </p>
 
           {/* CTA Buttons */}
@@ -93,7 +134,7 @@ export default function HeroSection() {
               <ArrowRight className="h-4 w-4" />
             </Button>
             <Button
-              href="https://github.com/hiclaw/hiclaw"
+              href="https://github.com/higress-group/hiclaw"
               variant="secondary"
               size="lg"
               external
@@ -103,23 +144,79 @@ export default function HeroSection() {
             </Button>
           </div>
 
-          {/* Terminal Demo */}
-          <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-slate-200 bg-slate-900 shadow-2xl">
-            {/* Terminal Header */}
-            <div className="flex items-center gap-2 border-b border-slate-700 bg-slate-800 px-4 py-3">
-              <div className="h-3 w-3 rounded-full bg-red-500" />
-              <div className="h-3 w-3 rounded-full bg-yellow-500" />
-              <div className="h-3 w-3 rounded-full bg-green-500" />
-              <span className="ml-2 text-xs text-slate-400">
-                {t.hero.terminal}
-              </span>
+          {/* Terminal Demo - Larger and cleaner like reference */}
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl bg-[#1a1f2e] shadow-2xl">
+            {/* Terminal Header with OS Tabs */}
+            <div className="flex items-center justify-between border-b border-slate-700/50 bg-[#252a3a] px-5 py-3">
+              <div className="flex items-center gap-2.5">
+                <div className="h-3.5 w-3.5 rounded-full bg-[#ff5f57]" />
+                <div className="h-3.5 w-3.5 rounded-full bg-[#febc2e]" />
+                <div className="h-3.5 w-3.5 rounded-full bg-[#28c840]" />
+                <span className="ml-3 text-sm text-slate-400">
+                  {t.hero.terminal}
+                </span>
+              </div>
+              {/* OS Selection Tabs */}
+              <div className="flex gap-1 rounded-lg bg-slate-800/50 p-1">
+                <button
+                  onClick={() => handleOSChange("unix")}
+                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+                    selectedOS === "unix"
+                      ? "bg-primary-600 text-white"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  macOS / Linux
+                </button>
+                <button
+                  onClick={() => handleOSChange("windows")}
+                  className={`rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+                    selectedOS === "windows"
+                      ? "bg-primary-600 text-white"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  Windows
+                </button>
+              </div>
             </div>
 
             {/* Terminal Content */}
-            <div className="min-h-[140px] p-4 text-left font-mono text-sm">
-              <pre className="whitespace-pre-wrap text-slate-100">
-                {displayedText}
-                <span className="animate-pulse text-primary-400">|</span>
+            <div className="min-h-[220px] px-6 py-5 text-left font-mono">
+              <pre className="whitespace-pre-wrap text-base leading-relaxed text-slate-100 md:text-lg">
+                {displayedText.split("\n").map((line, i) => {
+                  // Determine line type
+                  const isComment = line.startsWith("#");
+                  const isPS = line.startsWith("PS>");
+                  const isUnixPrompt = line.startsWith("$");
+                  
+                  if (isComment) {
+                    return (
+                      <div key={i} className="flex">
+                        <span className="text-slate-500">{line}</span>
+                      </div>
+                    );
+                  }
+                  
+                  const promptLength = isPS ? 3 : isUnixPrompt ? 1 : 0;
+                  return (
+                    <div key={i} className="flex">
+                      {line && promptLength > 0 ? (
+                        <>
+                          <span className="text-emerald-400 select-none">
+                            {line.substring(0, promptLength)}
+                          </span>
+                          <span className="text-slate-100">
+                            {line.substring(promptLength)}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="text-slate-100">{line}</span>
+                      )}
+                    </div>
+                  );
+                })}
+                <span className="inline-block w-2.5 h-5 bg-slate-400 animate-pulse ml-0.5 align-middle" />
               </pre>
             </div>
           </div>

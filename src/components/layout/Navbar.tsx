@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Github, Globe } from "lucide-react";
 import { useI18n } from "@/i18n";
 
@@ -14,7 +15,7 @@ export default function Navbar() {
     { href: "#features", label: t.nav.features },
     { href: "#architecture", label: t.nav.architecture },
     { href: "#quickstart", label: t.nav.quickStart },
-    { href: "https://github.com/hiclaw/hiclaw", label: t.nav.docs, external: true },
+    { href: "https://github.com/higress-group/hiclaw/tree/main/docs", label: t.nav.docs, external: true },
   ];
 
   useEffect(() => {
@@ -40,11 +41,14 @@ export default function Navbar() {
       <nav className="section-container">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600">
-              <span className="text-lg font-bold text-white">H</span>
-            </div>
-            <span className="text-xl font-bold text-text-primary">HiClaw</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo-full.png"
+              alt="HiClaw"
+              width={120}
+              height={40}
+              className="h-6 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -75,7 +79,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="https://github.com/hiclaw/hiclaw"
+              href="https://github.com/higress-group/hiclaw"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-text-primary transition-all hover:border-primary-300 hover:bg-primary-50"
@@ -131,7 +135,7 @@ export default function Navbar() {
                   <span>{locale === "en" ? "切换到中文" : "Switch to English"}</span>
                 </button>
                 <Link
-                  href="https://github.com/hiclaw/hiclaw"
+                  href="https://github.com/higress-group/hiclaw"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-text-primary"

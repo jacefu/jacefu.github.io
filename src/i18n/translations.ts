@@ -25,6 +25,8 @@ export const translations = {
         "Let multiple AI Agents collaborate in Matrix rooms, fully visible to humans, with real-time intervention capability.",
       subtitleLine2:
         "Manager Agent coordinates multiple Worker Agents to complete complex tasks.",
+      subtitleLine3:
+        "Fast-track your OPOC (One Person One Company) and enterprise digital workforce.",
       quickStart: "Quick Start",
       viewOnGithub: "View on GitHub",
       terminal: "terminal",
@@ -34,8 +36,13 @@ export const translations = {
     features: {
       title: "Why HiClaw?",
       subtitle:
-        "Designed for multi-agent collaboration, enabling AI Agent teams to work as efficiently as human teams",
+        "Featuring enterprise-grade security and designed specifically for multi-agent collaboration, enabling AI agent teams to work together as efficiently as human teams",
       items: [
+        {
+          title: "Enterprise Security",
+          description:
+            "Workers never hold real API keys or GitHub PATs. They only carry a consumer token (like a badge). Even a compromised Worker can't leak your credentials.",
+        },
         {
           title: "Multi-Agent Collaboration",
           description:
@@ -61,11 +68,6 @@ export const translations = {
           description:
             "Completely open source, community-driven development, no vendor lock-in, supports local private deployment with full data sovereignty.",
         },
-        {
-          title: "Quick Start",
-          description:
-            "Complete setup in minutes with built-in example task templates, experience the power of multi-agent collaboration immediately.",
-        },
       ],
     },
 
@@ -73,68 +75,49 @@ export const translations = {
     arch: {
       title: "System Architecture",
       subtitle:
-        "Distributed Agent team architecture based on Matrix protocol, humans can join any room at any time to observe and intervene.",
+        "Matrix-based collaboration hub with Higress AI Gateway providing a security and governance layer — agents never hold real credentials.",
       points: [
         {
-          title: "Matrix Homeserver",
+          title: "Collaboration Hub (Matrix Based)",
           description:
-            "All communications happen in Matrix rooms, messages are persistently stored, supports end-to-end encryption",
+            "Manager Agent orchestrates Control Flow, Worker Agents handle Task Flow, all communicating through a central Matrix Server with end-to-end encryption. Humans observe via Matrix Client.",
         },
         {
-          title: "Manager Agent",
+          title: "Security & Governance Layer",
           description:
-            "Receives tasks, decomposes subtasks, assigns to Workers, monitors execution progress",
+            "Credentials pass-through and secure API proxy ensure no keys are held by agents. Even a compromised Worker cannot leak your credentials.",
         },
         {
-          title: "Worker Agents",
+          title: "Higress AI Gateway",
           description:
-            "Focuses on executing specific tasks, customizable capabilities, supports parallel processing",
+            "Central gateway providing secure external API access to LLM providers (Qwen, Claude, OpenAI, local models) and external APIs / MCP Servers / Skills.",
         },
       ],
-      diagram: {
-        homeserver: "Matrix Homeserver",
-        human: "Human",
-        main: "#main",
-        managerAgent: "Manager Agent",
-        legend: ["Human can", "observe &", "intervene"],
-      },
     },
 
     // Quick Start Section
     quickstart: {
       title: "Quick Start",
       subtitle:
-        "Get started with HiClaw in three steps and experience the power of multi-agent collaboration",
-      steps: [
-        {
-          id: "install",
-          title: "Install",
-          description: "Install HiClaw using pip",
-        },
-        {
-          id: "init",
-          title: "Initialize",
-          description: "Initialize configuration files and Matrix connection",
-        },
-        {
-          id: "run",
-          title: "Run",
-          description: "Start Agent team to execute tasks",
-        },
+        "One command to install. The script asks for your LLM API key, then sets everything up.",
+      prerequisite: "Prerequisites",
+      prerequisiteDesc:
+        "Docker Desktop (Windows/macOS) or Docker Engine (Linux). That's all.",
+      dockerItems: [
+        "Docker Desktop (Windows / macOS)",
+        "Docker Engine (Linux) or Podman Desktop (alternative)",
       ],
-      completeExample: "Complete Example",
-      comments: {
-        install: "# 1. Install HiClaw",
-        init: "# 2. Initialize configuration",
-        run: "# 3. Run your first task",
-        output: "# Output:",
-        manager1: "# [Manager] Task received, analyzing...",
-        manager2: "# [Manager] Created subtasks: research, analysis, writing",
-        worker1: "# [Worker-1] Starting research task...",
-        worker2: "# [Worker-2] Preparing analysis framework...",
-        worker3: "# [Worker-3] Ready for summary writing...",
-        observe: "# You can now open your Matrix client to observe the conversation!",
-      },
+      resourceNote:
+        "The Docker VM needs at least 2 CPU cores and 4 GB RAM. In Docker Desktop, go to Settings → Resources to adjust.",
+      outputTitle: "When it's done:",
+      outputLines: [
+        "=== HiClaw Manager Started! ===",
+        "  Open: http://127.0.0.1:18088",
+        '  Login: admin / [generated password]',
+        '  Tell the Manager: "Create a Worker named alice for frontend dev"',
+      ],
+      tabMacLinux: "macOS / Linux",
+      tabWindows: "Windows (PowerShell 7+)",
     },
 
     // Footer
@@ -182,6 +165,7 @@ export const translations = {
       subtitle:
         "让多个 AI Agent 在 Matrix 房间中协作，人类全程可见、随时可介入。",
       subtitleLine2: "Manager Agent 协调多个 Worker Agent，完成复杂任务。",
+      subtitleLine3: "加速实现 OPOC（一人一公司）和企业数字员工。",
       quickStart: "快速开始",
       viewOnGithub: "在 GitHub 查看",
       terminal: "终端",
@@ -191,8 +175,13 @@ export const translations = {
     features: {
       title: "为什么选择 HiClaw？",
       subtitle:
-        "专为多 Agent 协作场景设计，让 AI Agent 团队像人类团队一样高效协作",
+        "具备企业级安全性，专为多 Agent 协作场景设计，让 AI Agent 团队像人类团队一样高效协作",
       items: [
+        {
+          title: "企业级安全",
+          description:
+            "Worker 永远不会持有真实的 API 密钥或 GitHub PAT，它们仅携带消费者令牌（类似工牌）。即使 Worker 被攻破，也无法泄露您的凭证。",
+        },
         {
           title: "多 Agent 协作",
           description:
@@ -218,11 +207,6 @@ export const translations = {
           description:
             "代码完全开放，社区驱动开发，无供应商锁定，支持本地私有化部署，数据完全自主可控。",
         },
-        {
-          title: "快速上手",
-          description:
-            "数分钟完成安装配置，内置示例任务模板，立即体验多 Agent 协作的强大能力。",
-        },
       ],
     },
 
@@ -230,65 +214,49 @@ export const translations = {
     arch: {
       title: "系统架构",
       subtitle:
-        "基于 Matrix 协议的分布式 Agent 团队架构，人类可以随时加入任意房间观察和干预。",
+        "基于 Matrix 协议的协作中枢，Higress AI 网关提供安全治理层——Agent 永不持有真实凭证。",
       points: [
         {
-          title: "Matrix 服务器",
+          title: "协作中枢（基于 Matrix）",
           description:
-            "所有通信发生在 Matrix 房间，消息持久化存储，支持端到端加密",
+            "Manager Agent 编排控制流，Worker Agent 处理任务流，所有通信经由中央 Matrix 服务器并支持端到端加密。人类通过 Matrix 客户端观察。",
         },
         {
-          title: "Manager Agent",
-          description: "接收任务、分解子任务、分配给 Worker，监控执行进度",
+          title: "安全治理层",
+          description:
+            "凭证透传与安全 API 代理确保 Agent 不持有任何密钥。即使 Worker 被攻破，也无法泄露您的凭证。",
         },
         {
-          title: "Worker Agents",
-          description: "专注执行具体任务，可自定义能力，支持并行处理",
+          title: "Higress AI 网关",
+          description:
+            "中央网关提供安全的外部 API 访问，连接 LLM 提供商（通义千问、Claude、OpenAI、本地模型）和外部 API / MCP 服务器 / Skills。",
         },
       ],
-      diagram: {
-        homeserver: "Matrix 服务器",
-        human: "人类",
-        main: "#main",
-        managerAgent: "Manager Agent",
-        legend: ["人类可以", "随时观察", "并介入"],
-      },
     },
 
     // Quick Start Section
     quickstart: {
       title: "快速开始",
-      subtitle: "三步开始使用 HiClaw，体验多 Agent 协作的强大能力",
-      steps: [
-        {
-          id: "install",
-          title: "安装",
-          description: "使用 pip 安装 HiClaw",
-        },
-        {
-          id: "init",
-          title: "初始化",
-          description: "初始化配置文件和 Matrix 连接",
-        },
-        {
-          id: "run",
-          title: "运行",
-          description: "启动 Agent 团队执行任务",
-        },
+      subtitle:
+        "一行命令完成安装。脚本会要求输入 LLM API Key，然后自动完成所有配置。",
+      prerequisite: "前置条件",
+      prerequisiteDesc:
+        "Docker Desktop（Windows/macOS）或 Docker Engine（Linux），仅此而已。",
+      dockerItems: [
+        "Docker Desktop（Windows / macOS）",
+        "Docker Engine（Linux）或 Podman Desktop（替代方案）",
       ],
-      completeExample: "完整示例",
-      comments: {
-        install: "# 1. 安装 HiClaw",
-        init: "# 2. 初始化配置",
-        run: "# 3. 运行你的第一个任务",
-        output: "# 输出：",
-        manager1: "# [Manager] 收到任务，正在分析...",
-        manager2: "# [Manager] 创建子任务：研究、分析、撰写",
-        worker1: "# [Worker-1] 开始研究任务...",
-        worker2: "# [Worker-2] 准备分析框架...",
-        worker3: "# [Worker-3] 准备撰写摘要...",
-        observe: "# 现在可以打开 Matrix 客户端观察对话了！",
-      },
+      resourceNote:
+        "Docker 虚拟机至少需要 2 核 CPU 和 4 GB 内存。在 Docker Desktop 中，前往 Settings → Resources 调整。",
+      outputTitle: "安装完成后：",
+      outputLines: [
+        "=== HiClaw Manager Started! ===",
+        "  Open: http://127.0.0.1:18088",
+        '  Login: admin / [生成的密码]',
+        '  Tell the Manager: "创建一个名为 alice 的前端开发 Worker"',
+      ],
+      tabMacLinux: "macOS / Linux",
+      tabWindows: "Windows (PowerShell 7+)",
     },
 
     // Footer
@@ -310,7 +278,8 @@ export const translations = {
       copyright: "HiClaw. 基于 Apache 2.0 许可证开源。",
     },
   },
-} as const;
+};
 
-export type Locale = keyof typeof translations;
+export type Locale = "en" | "zh";
+
 export type TranslationKeys = typeof translations.en;

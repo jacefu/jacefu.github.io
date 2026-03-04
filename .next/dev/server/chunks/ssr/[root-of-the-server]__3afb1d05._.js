@@ -36,6 +36,7 @@ const translations = {
             },
             subtitle: "Let multiple AI Agents collaborate in Matrix rooms, fully visible to humans, with real-time intervention capability.",
             subtitleLine2: "Manager Agent coordinates multiple Worker Agents to complete complex tasks.",
+            subtitleLine3: "Fast-track your OPOC (One Person One Company) and enterprise digital workforce.",
             quickStart: "Quick Start",
             viewOnGithub: "View on GitHub",
             terminal: "terminal"
@@ -43,8 +44,12 @@ const translations = {
         // Features Section
         features: {
             title: "Why HiClaw?",
-            subtitle: "Designed for multi-agent collaboration, enabling AI Agent teams to work as efficiently as human teams",
+            subtitle: "Featuring enterprise-grade security and designed specifically for multi-agent collaboration, enabling AI agent teams to work together as efficiently as human teams",
             items: [
+                {
+                    title: "Enterprise Security",
+                    description: "Workers never hold real API keys or GitHub PATs. They only carry a consumer token (like a badge). Even a compromised Worker can't leak your credentials."
+                },
                 {
                     title: "Multi-Agent Collaboration",
                     description: "Manager Agent intelligently decomposes tasks and coordinates multiple Worker Agents for parallel execution, significantly improving complex task handling."
@@ -64,77 +69,48 @@ const translations = {
                 {
                     title: "Fully Open Source",
                     description: "Completely open source, community-driven development, no vendor lock-in, supports local private deployment with full data sovereignty."
-                },
-                {
-                    title: "Quick Start",
-                    description: "Complete setup in minutes with built-in example task templates, experience the power of multi-agent collaboration immediately."
                 }
             ]
         },
         // Architecture Section
         arch: {
             title: "System Architecture",
-            subtitle: "Distributed Agent team architecture based on Matrix protocol, humans can join any room at any time to observe and intervene.",
+            subtitle: "Matrix-based collaboration hub with Higress AI Gateway providing a security and governance layer — agents never hold real credentials.",
             points: [
                 {
-                    title: "Matrix Homeserver",
-                    description: "All communications happen in Matrix rooms, messages are persistently stored, supports end-to-end encryption"
+                    title: "Collaboration Hub (Matrix Based)",
+                    description: "Manager Agent orchestrates Control Flow, Worker Agents handle Task Flow, all communicating through a central Matrix Server with end-to-end encryption. Humans observe via Matrix Client."
                 },
                 {
-                    title: "Manager Agent",
-                    description: "Receives tasks, decomposes subtasks, assigns to Workers, monitors execution progress"
+                    title: "Security & Governance Layer",
+                    description: "Credentials pass-through and secure API proxy ensure no keys are held by agents. Even a compromised Worker cannot leak your credentials."
                 },
                 {
-                    title: "Worker Agents",
-                    description: "Focuses on executing specific tasks, customizable capabilities, supports parallel processing"
+                    title: "Higress AI Gateway",
+                    description: "Central gateway providing secure external API access to LLM providers (Qwen, Claude, OpenAI, local models) and external APIs / MCP Servers / Skills."
                 }
-            ],
-            diagram: {
-                homeserver: "Matrix Homeserver",
-                human: "Human",
-                main: "#main",
-                managerAgent: "Manager Agent",
-                legend: [
-                    "Human can",
-                    "observe &",
-                    "intervene"
-                ]
-            }
+            ]
         },
         // Quick Start Section
         quickstart: {
             title: "Quick Start",
-            subtitle: "Get started with HiClaw in three steps and experience the power of multi-agent collaboration",
-            steps: [
-                {
-                    id: "install",
-                    title: "Install",
-                    description: "Install HiClaw using pip"
-                },
-                {
-                    id: "init",
-                    title: "Initialize",
-                    description: "Initialize configuration files and Matrix connection"
-                },
-                {
-                    id: "run",
-                    title: "Run",
-                    description: "Start Agent team to execute tasks"
-                }
+            subtitle: "One command to install. The script asks for your LLM API key, then sets everything up.",
+            prerequisite: "Prerequisites",
+            prerequisiteDesc: "Docker Desktop (Windows/macOS) or Docker Engine (Linux). That's all.",
+            dockerItems: [
+                "Docker Desktop (Windows / macOS)",
+                "Docker Engine (Linux) or Podman Desktop (alternative)"
             ],
-            completeExample: "Complete Example",
-            comments: {
-                install: "# 1. Install HiClaw",
-                init: "# 2. Initialize configuration",
-                run: "# 3. Run your first task",
-                output: "# Output:",
-                manager1: "# [Manager] Task received, analyzing...",
-                manager2: "# [Manager] Created subtasks: research, analysis, writing",
-                worker1: "# [Worker-1] Starting research task...",
-                worker2: "# [Worker-2] Preparing analysis framework...",
-                worker3: "# [Worker-3] Ready for summary writing...",
-                observe: "# You can now open your Matrix client to observe the conversation!"
-            }
+            resourceNote: "The Docker VM needs at least 2 CPU cores and 4 GB RAM. In Docker Desktop, go to Settings → Resources to adjust.",
+            outputTitle: "When it's done:",
+            outputLines: [
+                "=== HiClaw Manager Started! ===",
+                "  Open: http://127.0.0.1:18088",
+                '  Login: admin / [generated password]',
+                '  Tell the Manager: "Create a Worker named alice for frontend dev"'
+            ],
+            tabMacLinux: "macOS / Linux",
+            tabWindows: "Windows (PowerShell 7+)"
         },
         // Footer
         footer: {
@@ -177,6 +153,7 @@ const translations = {
             },
             subtitle: "让多个 AI Agent 在 Matrix 房间中协作，人类全程可见、随时可介入。",
             subtitleLine2: "Manager Agent 协调多个 Worker Agent，完成复杂任务。",
+            subtitleLine3: "加速实现 OPOC（一人一公司）和企业数字员工。",
             quickStart: "快速开始",
             viewOnGithub: "在 GitHub 查看",
             terminal: "终端"
@@ -184,8 +161,12 @@ const translations = {
         // Features Section
         features: {
             title: "为什么选择 HiClaw？",
-            subtitle: "专为多 Agent 协作场景设计，让 AI Agent 团队像人类团队一样高效协作",
+            subtitle: "具备企业级安全性，专为多 Agent 协作场景设计，让 AI Agent 团队像人类团队一样高效协作",
             items: [
+                {
+                    title: "企业级安全",
+                    description: "Worker 永远不会持有真实的 API 密钥或 GitHub PAT，它们仅携带消费者令牌（类似工牌）。即使 Worker 被攻破，也无法泄露您的凭证。"
+                },
                 {
                     title: "多 Agent 协作",
                     description: "Manager Agent 智能分解任务，协调多个 Worker Agent 并行执行，大幅提升复杂任务处理能力。"
@@ -205,77 +186,48 @@ const translations = {
                 {
                     title: "完全开源",
                     description: "代码完全开放，社区驱动开发，无供应商锁定，支持本地私有化部署，数据完全自主可控。"
-                },
-                {
-                    title: "快速上手",
-                    description: "数分钟完成安装配置，内置示例任务模板，立即体验多 Agent 协作的强大能力。"
                 }
             ]
         },
         // Architecture Section
         arch: {
             title: "系统架构",
-            subtitle: "基于 Matrix 协议的分布式 Agent 团队架构，人类可以随时加入任意房间观察和干预。",
+            subtitle: "基于 Matrix 协议的协作中枢，Higress AI 网关提供安全治理层——Agent 永不持有真实凭证。",
             points: [
                 {
-                    title: "Matrix 服务器",
-                    description: "所有通信发生在 Matrix 房间，消息持久化存储，支持端到端加密"
+                    title: "协作中枢（基于 Matrix）",
+                    description: "Manager Agent 编排控制流，Worker Agent 处理任务流，所有通信经由中央 Matrix 服务器并支持端到端加密。人类通过 Matrix 客户端观察。"
                 },
                 {
-                    title: "Manager Agent",
-                    description: "接收任务、分解子任务、分配给 Worker，监控执行进度"
+                    title: "安全治理层",
+                    description: "凭证透传与安全 API 代理确保 Agent 不持有任何密钥。即使 Worker 被攻破，也无法泄露您的凭证。"
                 },
                 {
-                    title: "Worker Agents",
-                    description: "专注执行具体任务，可自定义能力，支持并行处理"
+                    title: "Higress AI 网关",
+                    description: "中央网关提供安全的外部 API 访问，连接 LLM 提供商（通义千问、Claude、OpenAI、本地模型）和外部 API / MCP 服务器 / Skills。"
                 }
-            ],
-            diagram: {
-                homeserver: "Matrix 服务器",
-                human: "人类",
-                main: "#main",
-                managerAgent: "Manager Agent",
-                legend: [
-                    "人类可以",
-                    "随时观察",
-                    "并介入"
-                ]
-            }
+            ]
         },
         // Quick Start Section
         quickstart: {
             title: "快速开始",
-            subtitle: "三步开始使用 HiClaw，体验多 Agent 协作的强大能力",
-            steps: [
-                {
-                    id: "install",
-                    title: "安装",
-                    description: "使用 pip 安装 HiClaw"
-                },
-                {
-                    id: "init",
-                    title: "初始化",
-                    description: "初始化配置文件和 Matrix 连接"
-                },
-                {
-                    id: "run",
-                    title: "运行",
-                    description: "启动 Agent 团队执行任务"
-                }
+            subtitle: "一行命令完成安装。脚本会要求输入 LLM API Key，然后自动完成所有配置。",
+            prerequisite: "前置条件",
+            prerequisiteDesc: "Docker Desktop（Windows/macOS）或 Docker Engine（Linux），仅此而已。",
+            dockerItems: [
+                "Docker Desktop（Windows / macOS）",
+                "Docker Engine（Linux）或 Podman Desktop（替代方案）"
             ],
-            completeExample: "完整示例",
-            comments: {
-                install: "# 1. 安装 HiClaw",
-                init: "# 2. 初始化配置",
-                run: "# 3. 运行你的第一个任务",
-                output: "# 输出：",
-                manager1: "# [Manager] 收到任务，正在分析...",
-                manager2: "# [Manager] 创建子任务：研究、分析、撰写",
-                worker1: "# [Worker-1] 开始研究任务...",
-                worker2: "# [Worker-2] 准备分析框架...",
-                worker3: "# [Worker-3] 准备撰写摘要...",
-                observe: "# 现在可以打开 Matrix 客户端观察对话了！"
-            }
+            resourceNote: "Docker 虚拟机至少需要 2 核 CPU 和 4 GB 内存。在 Docker Desktop 中，前往 Settings → Resources 调整。",
+            outputTitle: "安装完成后：",
+            outputLines: [
+                "=== HiClaw Manager Started! ===",
+                "  Open: http://127.0.0.1:18088",
+                '  Login: admin / [生成的密码]',
+                '  Tell the Manager: "创建一个名为 alice 的前端开发 Worker"'
+            ],
+            tabMacLinux: "macOS / Linux",
+            tabWindows: "Windows (PowerShell 7+)"
         },
         // Footer
         footer: {
@@ -377,6 +329,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/image.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/menu.js [app-ssr] (ecmascript) <export default as Menu>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/x.js [app-ssr] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/github.js [app-ssr] (ecmascript) <export default as Github>");
@@ -384,6 +337,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lu
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$index$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/hiclaw/src/i18n/index.ts [app-ssr] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/src/i18n/context.tsx [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -407,7 +361,7 @@ function Navbar() {
             label: t.nav.quickStart
         },
         {
-            href: "https://github.com/hiclaw/hiclaw",
+            href: "https://github.com/higress-group/hiclaw/tree/main/docs",
             label: t.nav.docs,
             external: true
         }
@@ -432,35 +386,21 @@ function Navbar() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/",
-                            className: "flex items-center gap-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-lg font-bold text-white",
-                                        children: "H"
-                                    }, void 0, false, {
-                                        fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                        lineNumber: 45,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 44,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-xl font-bold text-text-primary",
-                                    children: "HiClaw"
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 47,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                            className: "flex items-center",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                src: "/logo-full.png",
+                                alt: "HiClaw",
+                                width: 120,
+                                height: 40,
+                                className: "h-6 w-auto"
+                            }, void 0, false, {
+                                fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
+                                lineNumber: 45,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                            lineNumber: 43,
+                            lineNumber: 44,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -473,12 +413,12 @@ function Navbar() {
                                     children: link.label
                                 }, link.href, false, {
                                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 53,
+                                    lineNumber: 57,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                            lineNumber: 51,
+                            lineNumber: 55,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -493,24 +433,24 @@ function Navbar() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                            lineNumber: 73,
+                                            lineNumber: 77,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: locale === "en" ? "中文" : "EN"
                                         }, void 0, false, {
                                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                            lineNumber: 74,
+                                            lineNumber: 78,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 72,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "https://github.com/hiclaw/hiclaw",
+                                    href: "https://github.com/higress-group/hiclaw",
                                     target: "_blank",
                                     rel: "noopener noreferrer",
                                     className: "flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-text-primary transition-all hover:border-primary-300 hover:bg-primary-50",
@@ -519,20 +459,20 @@ function Navbar() {
                                             className: "h-4 w-4"
                                         }, void 0, false, {
                                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                            lineNumber: 83,
+                                            lineNumber: 87,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: t.nav.github
                                         }, void 0, false, {
                                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 88,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 81,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -541,13 +481,13 @@ function Navbar() {
                                     children: t.nav.getStarted
                                 }, void 0, false, {
                                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                            lineNumber: 66,
+                            lineNumber: 70,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -558,24 +498,24 @@ function Navbar() {
                                 className: "h-6 w-6 text-text-primary"
                             }, void 0, false, {
                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                lineNumber: 101,
+                                lineNumber: 105,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
                                 className: "h-6 w-6 text-text-primary"
                             }, void 0, false, {
                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                lineNumber: 103,
+                                lineNumber: 107,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                            lineNumber: 95,
+                            lineNumber: 99,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                    lineNumber: 41,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this),
                 isMobileMenuOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -592,7 +532,7 @@ function Navbar() {
                                     children: link.label
                                 }, link.href, false, {
                                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 117,
                                     columnNumber: 17
                                 }, this)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -606,24 +546,24 @@ function Navbar() {
                                                 className: "h-4 w-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                                lineNumber: 130,
+                                                lineNumber: 134,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: locale === "en" ? "切换到中文" : "Switch to English"
                                             }, void 0, false, {
                                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                                lineNumber: 131,
+                                                lineNumber: 135,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 130,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                        href: "https://github.com/hiclaw/hiclaw",
+                                        href: "https://github.com/higress-group/hiclaw",
                                         target: "_blank",
                                         rel: "noopener noreferrer",
                                         className: "flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-text-primary",
@@ -632,20 +572,20 @@ function Navbar() {
                                                 className: "h-4 w-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                                lineNumber: 139,
+                                                lineNumber: 143,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: t.nav.github
                                             }, void 0, false, {
                                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                                lineNumber: 140,
+                                                lineNumber: 144,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 137,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -655,35 +595,35 @@ function Navbar() {
                                         children: t.nav.getStarted
                                     }, void 0, false, {
                                         fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                        lineNumber: 142,
+                                        lineNumber: 146,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                                lineNumber: 124,
+                                lineNumber: 128,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                        lineNumber: 111,
+                        lineNumber: 115,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-                    lineNumber: 110,
+                    lineNumber: 114,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-            lineNumber: 40,
+            lineNumber: 41,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/hiclaw/src/components/layout/Navbar.tsx",
-        lineNumber: 33,
+        lineNumber: 34,
         columnNumber: 5
     }, this);
 }
@@ -696,10 +636,12 @@ __turbopack_context__.s([
     ()=>Footer
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/next/image.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/github.js [app-ssr] (ecmascript) <export default as Github>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$twitter$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Twitter$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/twitter.js [app-ssr] (ecmascript) <export default as Twitter>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/message-circle.js [app-ssr] (ecmascript) <export default as MessageCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/hiclaw/node_modules/lucide-react/dist/esm/icons/x.js [app-ssr] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$index$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/hiclaw/src/i18n/index.ts [app-ssr] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/hiclaw/src/i18n/context.tsx [app-ssr] (ecmascript)");
 "use client";
@@ -707,8 +649,50 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$con
 ;
 ;
 ;
+;
+;
+function DiscordIcon({ className }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        className: className,
+        viewBox: "0 0 24 24",
+        fill: "currentColor",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+        }, void 0, false, {
+            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+            lineNumber: 17,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+        lineNumber: 11,
+        columnNumber: 5
+    }, this);
+}
+function DingTalkIcon({ className }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        className: className,
+        viewBox: "0 0 24 24",
+        fill: "currentColor",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 10.8l-3.12 2.88c-.08.08-.12.16-.16.28l-.52 1.84c-.04.12-.2.16-.28.04l-1.2-1.4c-.08-.08-.16-.12-.28-.12l-1.56.04c-.12 0-.2-.12-.12-.24l1.44-2.04c.04-.08.04-.16 0-.24L8.6 10.72c-.08-.12 0-.28.16-.24l2.32.52c.08.04.2 0 .24-.08l1.6-2.68c.08-.12.24-.08.28.04l.28 2.72c0 .08.08.16.16.2l2.76.88c.16.04.16.24.04.32l-.36.24c-.08.04-.12.12-.08.2l.68 1.6c.04.12-.04.24-.16.2l-1.96-.44c-.08 0-.16 0-.2.08l-.72.84"
+        }, void 0, false, {
+            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+            lineNumber: 30,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+        lineNumber: 24,
+        columnNumber: 5
+    }, this);
+}
 function Footer() {
-    const { t } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useI18n"])();
+    const { t, locale } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$src$2f$i18n$2f$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useI18n"])();
+    const [showQR, setShowQR] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [dingHover, setDingHover] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const footerLinks = {
         product: [
             {
@@ -731,29 +715,35 @@ function Footer() {
         community: [
             {
                 label: t.footer.discord,
-                href: "#",
+                href: "https://discord.gg/n6mV8xEYUF",
                 external: true
             },
             {
-                label: t.footer.twitter,
+                label: "X",
                 href: "#",
                 external: true
             },
             {
                 label: "GitHub",
-                href: "https://github.com/hiclaw/hiclaw",
+                href: "https://github.com/higress-group/hiclaw",
                 external: true
+            },
+            {
+                label: "DingTalk",
+                href: "#dingtalk-qr",
+                external: false
             }
         ],
         resources: [
             {
                 label: t.footer.documentation,
-                href: "#",
+                href: "https://github.com/higress-group/hiclaw/tree/main/docs",
                 external: true
             },
             {
                 label: t.footer.blog,
-                href: "#"
+                href: "https://github.com/higress-group/hiclaw/tree/main/blog",
+                external: true
             },
             {
                 label: t.footer.changelog,
@@ -764,7 +754,7 @@ function Footer() {
     const socialLinks = [
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__["Github"],
-            href: "https://github.com/hiclaw/hiclaw",
+            href: "https://github.com/higress-group/hiclaw",
             label: "GitHub"
         },
         {
@@ -773,247 +763,340 @@ function Footer() {
             label: "Twitter"
         },
         {
-            icon: __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"],
-            href: "#",
+            icon: DiscordIcon,
+            href: "https://discord.gg/n6mV8xEYUF",
             label: "Discord"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
         className: "border-t border-slate-200 bg-surface-muted",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "section-container py-12 md:py-16",
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "grid gap-8 md:grid-cols-2 lg:grid-cols-5",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "lg:col-span-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/",
-                                    className: "flex items-center gap-2",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-lg font-bold text-white",
-                                                children: "H"
-                                            }, void 0, false, {
-                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                                lineNumber: 44,
-                                                columnNumber: 17
-                                            }, this)
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "section-container py-12 md:py-16",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "grid gap-8 md:grid-cols-2 lg:grid-cols-5",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "lg:col-span-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/",
+                                        className: "flex items-center",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                            src: "/logo-full.png",
+                                            alt: "HiClaw",
+                                            width: 120,
+                                            height: 40,
+                                            className: "h-6 w-auto"
                                         }, void 0, false, {
                                             fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                            lineNumber: 43,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-xl font-bold text-text-primary",
-                                            children: "HiClaw"
-                                        }, void 0, false, {
-                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                            lineNumber: 46,
+                                            lineNumber: 74,
                                             columnNumber: 15
                                         }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 42,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "mt-4 max-w-xs text-sm text-text-secondary",
-                                    children: t.footer.description
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 50,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mt-6 flex gap-4",
-                                    children: socialLinks.map((social)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                            href: social.href,
-                                            target: "_blank",
-                                            rel: "noopener noreferrer",
-                                            className: "flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-text-secondary transition-all hover:border-primary-300 hover:text-primary-600",
-                                            "aria-label": social.label,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(social.icon, {
-                                                className: "h-5 w-5"
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 73,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "mt-4 max-w-xs text-sm text-text-secondary",
+                                        children: t.footer.description
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "mt-6 flex gap-4",
+                                        children: [
+                                            socialLinks.map((social)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: social.href,
+                                                    target: "_blank",
+                                                    rel: "noopener noreferrer",
+                                                    className: "flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-text-secondary transition-all hover:border-primary-300 hover:text-primary-600",
+                                                    "aria-label": social.label,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(social.icon, {
+                                                        className: "h-5 w-5"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                        lineNumber: 95,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                }, social.label, false, {
+                                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                    lineNumber: 87,
+                                                    columnNumber: 17
+                                                }, this)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>setShowQR(true),
+                                                onMouseEnter: ()=>setDingHover(true),
+                                                onMouseLeave: ()=>setDingHover(false),
+                                                className: "flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 transition-all hover:border-primary-300",
+                                                "aria-label": "DingTalk",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "relative h-5 w-5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                            src: "/dingtalk-icon.jpg",
+                                                            alt: "DingTalk",
+                                                            width: 20,
+                                                            height: 20,
+                                                            className: "h-5 w-5 rounded-full"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                            lineNumber: 107,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "absolute inset-0 rounded-full transition-opacity",
+                                                            style: {
+                                                                backgroundColor: "#4F47DC",
+                                                                mixBlendMode: "color",
+                                                                opacity: dingHover ? 1 : 0
+                                                            }
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                            lineNumber: 114,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                    lineNumber: 106,
+                                                    columnNumber: 17
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                                lineNumber: 63,
-                                                columnNumber: 19
+                                                lineNumber: 99,
+                                                columnNumber: 15
                                             }, this)
-                                        }, social.label, false, {
-                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                            lineNumber: 55,
-                                            columnNumber: 17
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 53,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                            lineNumber: 41,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 85,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                lineNumber: 72,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-sm font-semibold text-text-primary",
+                                        children: t.footer.product
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 129,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                        className: "mt-4 space-y-3",
+                                        children: footerLinks.product.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: link.href,
+                                                    className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
+                                                    children: link.label
+                                                }, void 0, false, {
+                                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                    lineNumber: 135,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, link.label, false, {
+                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                lineNumber: 134,
+                                                columnNumber: 17
+                                            }, this))
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 132,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                lineNumber: 128,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-sm font-semibold text-text-primary",
+                                        children: t.footer.community
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 147,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                        className: "mt-4 space-y-3",
+                                        children: footerLinks.community.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                children: link.label === "DingTalk" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    onClick: ()=>setShowQR(true),
+                                                    className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
+                                                    children: link.label
+                                                }, void 0, false, {
+                                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                    lineNumber: 154,
+                                                    columnNumber: 21
+                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: link.href,
+                                                    target: link.external ? "_blank" : undefined,
+                                                    rel: link.external ? "noopener noreferrer" : undefined,
+                                                    className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
+                                                    children: link.label
+                                                }, void 0, false, {
+                                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                    lineNumber: 161,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, link.label, false, {
+                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                lineNumber: 152,
+                                                columnNumber: 17
+                                            }, this))
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 150,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                lineNumber: 146,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-sm font-semibold text-text-primary",
+                                        children: t.footer.resources
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 176,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                        className: "mt-4 space-y-3",
+                                        children: footerLinks.resources.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                    href: link.href,
+                                                    target: link.external ? "_blank" : undefined,
+                                                    rel: link.external ? "noopener noreferrer" : undefined,
+                                                    className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
+                                                    children: link.label
+                                                }, void 0, false, {
+                                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                    lineNumber: 182,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, link.label, false, {
+                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                                lineNumber: 181,
+                                                columnNumber: 17
+                                            }, this))
+                                    }, void 0, false, {
+                                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                        lineNumber: 179,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                lineNumber: 175,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                        lineNumber: 70,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-12 border-t border-slate-200 pt-8",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-center text-sm text-text-secondary",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-sm font-semibold text-text-primary",
-                                    children: t.footer.product
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 71,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                    className: "mt-4 space-y-3",
-                                    children: footerLinks.product.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                href: link.href,
-                                                className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
-                                                children: link.label
-                                            }, void 0, false, {
-                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                                lineNumber: 77,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, link.label, false, {
-                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                            lineNumber: 76,
-                                            columnNumber: 17
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 74,
-                                    columnNumber: 13
-                                }, this)
+                                "© ",
+                                new Date().getFullYear(),
+                                " ",
+                                t.footer.copyright
                             ]
                         }, void 0, true, {
                             fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                            lineNumber: 70,
+                            lineNumber: 198,
                             columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                        lineNumber: 197,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                lineNumber: 68,
+                columnNumber: 7
+            }, this),
+            showQR && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4",
+                onClick: ()=>setShowQR(false),
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "relative rounded-2xl bg-white p-6 shadow-xl",
+                    onClick: (e)=>e.stopPropagation(),
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: ()=>setShowQR(false),
+                            className: "absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
+                                className: "h-5 w-5"
+                            }, void 0, false, {
+                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                                lineNumber: 218,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                            lineNumber: 214,
+                            columnNumber: 13
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-sm font-semibold text-text-primary",
-                                    children: t.footer.community
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 89,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                    className: "mt-4 space-y-3",
-                                    children: footerLinks.community.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                href: link.href,
-                                                target: link.external ? "_blank" : undefined,
-                                                rel: link.external ? "noopener noreferrer" : undefined,
-                                                className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
-                                                children: link.label
-                                            }, void 0, false, {
-                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                                lineNumber: 95,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, link.label, false, {
-                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                            lineNumber: 94,
-                                            columnNumber: 17
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 92,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "mb-4 text-center font-semibold text-text-primary",
+                            children: locale === "zh" ? "钉钉扫码加入群聊" : "Scan to join DingTalk group"
+                        }, void 0, false, {
                             fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                            lineNumber: 88,
-                            columnNumber: 11
+                            lineNumber: 220,
+                            columnNumber: 13
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-sm font-semibold text-text-primary",
-                                    children: t.footer.resources
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 109,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                    className: "mt-4 space-y-3",
-                                    children: footerLinks.resources.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                                                href: link.href,
-                                                target: link.external ? "_blank" : undefined,
-                                                rel: link.external ? "noopener noreferrer" : undefined,
-                                                className: "text-sm text-text-secondary transition-colors hover:text-primary-600",
-                                                children: link.label
-                                            }, void 0, false, {
-                                                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                                lineNumber: 115,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, link.label, false, {
-                                            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                            lineNumber: 114,
-                                            columnNumber: 17
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                                    lineNumber: 112,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            src: "/dingtalk-qr.png",
+                            alt: "DingTalk QR Code",
+                            width: 240,
+                            height: 240,
+                            className: "h-60 w-60"
+                        }, void 0, false, {
                             fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                            lineNumber: 108,
-                            columnNumber: 11
+                            lineNumber: 223,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                    lineNumber: 39,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "mt-12 border-t border-slate-200 pt-8",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$hiclaw$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-center text-sm text-text-secondary",
-                        children: [
-                            "© ",
-                            new Date().getFullYear(),
-                            " ",
-                            t.footer.copyright
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                        lineNumber: 131,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-                    lineNumber: 130,
-                    columnNumber: 9
+                    lineNumber: 210,
+                    columnNumber: 11
                 }, this)
-            ]
-        }, void 0, true, {
-            fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-            lineNumber: 37,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+            }, void 0, false, {
+                fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
+                lineNumber: 206,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/hiclaw/src/components/layout/Footer.tsx",
-        lineNumber: 36,
+        lineNumber: 67,
         columnNumber: 5
     }, this);
 }
